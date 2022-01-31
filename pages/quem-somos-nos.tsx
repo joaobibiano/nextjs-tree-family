@@ -12,6 +12,7 @@ export const getStaticProps = async () => {
   return {
     props: {
       trees,
+      generatedDate: new Date().toLocaleString(),
     },
     revalidate: 60,
   };
@@ -22,7 +23,9 @@ export const getStaticProps = async () => {
 export default function QuemSomosNos(props: any) {
   return (
     <div>
-      Página gerada em {new Date().toLocaleString()}
+      <p>Data do client {new Date().toLocaleString()}</p>
+      <p>Data do servidor {props.generatedDate}</p>
+
       <h1>Somos uma empresa familiar que cuida da terra</h1>
       {props.trees.map((tree: any) => {
         return <p key={tree.id}>{tree.name}</p>;
